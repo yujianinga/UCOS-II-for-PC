@@ -121,7 +121,7 @@ void  App_Task0 (void *p_arg)
     while (TRUE)                                 /* Task body, always written as an infinite loop.                             */
 	{   
 		Task0_RunTime++;
-		OSTimeDlyHMSM(0, 0, 1, 0); 
+		OSTimeDlyHMSM(0, 0, 3, 0); 
 		OS_Printf("\r\n任务1你先停停，我要运行一下。");
     }
 }

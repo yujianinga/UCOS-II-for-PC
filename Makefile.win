@@ -1,0 +1,34 @@
+# Project: uCOSII
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o Source/os_dbg_r.o Source/ucos_ii.o
+LINKOBJ  = main.o Source/os_dbg_r.o Source/ucos_ii.o
+LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -lWinMM -lkernel32 -luser32 -lgdi32 -lwinspool -lcomdlg32 -ladvapi32 -lshell32 -lole32 -loleaut32 -luuid -lodbc32 -lodbccp32 -lkernel32 -luser32 -lgdi32 -lwinspool -lcomdlg32 -ladvapi32 -lshell32 -lole32 -loleaut32 -luuid -lodbc32 -lodbccp32
+INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I".//" -I"./Source//" -I"./Ports/Win32//"
+CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I".//" -I"./Source//" -I"./Ports/Win32//"
+BIN      = uCOSII.exe
+CXXFLAGS = $(CXXINCS) -g3 -D__GNUWIN32__ -W -fexceptions -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS
+CFLAGS   = $(INCS) -g3 -D__GNUWIN32__ -W -fexceptions -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+Source/os_dbg_r.o: Source/os_dbg_r.c
+	$(CC) -c Source/os_dbg_r.c -o Source/os_dbg_r.o $(CFLAGS)
+
+Source/ucos_ii.o: Source/ucos_ii.c
+	$(CC) -c Source/ucos_ii.c -o Source/ucos_ii.o $(CFLAGS)
